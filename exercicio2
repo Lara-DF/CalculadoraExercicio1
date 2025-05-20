@@ -1,0 +1,58 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.exercicio2;
+
+/**
+ *
+ * @author larad
+ */
+import java.util.Scanner;
+public class Exercicio2 {
+
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+        
+        try (Scanner scanner = new Scanner(System.in) // Cria um objeto Scanner para ler do teclado
+        ) {
+            double celsius; // Declara a variável para armazenar a temperatura em Celsius
+            System.out.println("--- Conversor de Temperaturas ---");
+            // Loop para permitir múltiplas conversões ou sair
+            while (true) {
+                System.out.print("Digite a temperatura em Celsius (ou '0' para sair): ");
+                // Lê a linha inteira para pegar tanto números quanto a palavra "0" para sair
+                String entrada = scanner.nextLine();
+                
+                // Verifica se o usuário quer sair
+                if (entrada.equals("0")) {
+                    System.out.println("Saindo do conversor de temperaturas. Até mais!");
+                    break; // Sai do loop e encerra o programa
+                }
+                
+                // Tenta converter a entrada do usuário para um número (double)
+                try {
+                    celsius = Double.parseDouble(entrada); // Converte a String lida para um número decimal
+                } catch (NumberFormatException e) {
+                    // Captura o erro se a entrada não for um número válido
+                    System.out.println("Entrada inválida. Por favor, digite um número ou '0' para sair.");
+                    continue; // Volta para o início do loop para pedir a entrada novamente
+                }
+                
+                // Realiza as conversões
+                // Fórmula Celsius para Fahrenheit: F = C * 1.8 + 32
+                double fahrenheit = celsius * 1.8 + 32;
+                
+                // Fórmula Celsius para Kelvin: K = C + 273.15
+                double kelvin = celsius + 273.15;
+                
+                // Exibe os resultados formatados com 2 casas decimais
+                System.out.printf("Temperatura em Celsius: %.2f°C%n", celsius);
+                System.out.printf("Temperatura em Fahrenheit: %.2f°F%n", fahrenheit);
+                System.out.printf("Temperatura em Kelvin: %.2fK%n", kelvin);
+                System.out.println(); // Imprime uma linha em branco para melhor leitura
+            }
+            // Fecha o Scanner para liberar os recursos do sistema
+        } // Declara a variável para armazenar a temperatura em Celsius
+    }
+}
