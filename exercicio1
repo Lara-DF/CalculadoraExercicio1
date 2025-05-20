@@ -1,0 +1,97 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.calculadora13;
+
+/**
+ *
+ * @author larad
+ */
+import java.util.InputMismatchException;
+ import java.util.Scanner;
+public class Calculadora13 {
+
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+   static { 
+        Scanner scanner = new Scanner(System.in);
+        int operacao;
+        double numero1, numero2, resultado;
+
+        System.out.println("--- Calculadora Simples ---");
+
+        while (true) {
+            System.out.println("\nEscolha a operação:");
+            System.out.println("1 - Soma (+)");
+            System.out.println("2 - Subtração (-)");
+            System.out.println("3 - Multiplicação (*)");
+            System.out.println("4 - Divisão (/)");
+            System.out.println("0 - Sair");
+            System.out.print("Digite o número da operação: ");
+
+            try {
+                operacao = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida. Por favor, digite um número inteiro para a operação.");
+                scanner.next(); // Limpa o buffer do scanner
+                continue; // Volta para o início do loop
+            }
+
+            if (operacao == 0) {
+                System.out.println("Saindo da calculadora. Até mais!");
+                break; // Sai do loop principal
+            }
+
+            if (operacao < 1 || operacao > 4) {
+                System.out.println("Opção inválida. Por favor, escolha uma operação entre 1 e 4, ou 0 para sair.");
+                continue; // Volta para o início do loop
+            }
+
+            // Obter os dois números
+            try {
+                System.out.print("Digite o primeiro número: ");
+                numero1 = scanner.nextDouble();
+
+                System.out.print("Digite o segundo número: ");
+                numero2 = scanner.nextDouble();
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida. Por favor, digite números válidos.");
+                scanner.next(); // Limpa o buffer do scanner
+                continue; // Volta para o início do loop
+            }
+
+            // Realizar a operação
+            resultado = 0; // Inicializa resultado
+
+            switch (operacao) {
+                case 1 -> {
+                    // Soma
+                    resultado = numero1 + numero2;
+                    System.out.println("Resultado da Soma: " + resultado);
+                }
+                case 2 -> {
+                    // Subtração
+                    resultado = numero1 - numero2;
+                    System.out.println("Resultado da Subtração: " + resultado);
+                }
+                case 3 -> {
+                    // Multiplicação
+                    resultado = numero1 * numero2;
+                    System.out.println("Resultado da Multiplicação: " + resultado);
+                }
+                case 4 -> {
+                    // Divisão
+                    if (numero2 == 0) {
+                        System.out.println("Erro: Não é possível dividir por zero!");
+                    } else {
+                        resultado = numero1 / numero2;
+                        System.out.println("Resultado da Divisão: " + resultado);
+                    }
+                }
+            }
+        }
+        scanner.close(); // Fecha o scanner quando não é mais necessário
+    }
+}
