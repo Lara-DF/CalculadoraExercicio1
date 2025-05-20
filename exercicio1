@@ -13,7 +13,6 @@ import java.util.InputMismatchException;
 public class Calculadora13 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
     }
    static { 
         Scanner scanner = new Scanner(System.in);
