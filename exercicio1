@@ -2,19 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.calculadora13;
+package com.mycompany.exercicio1;
 
 /**
  *
- * @author larad
+ * @author FATEC ZONA LESTE
  */
+
 import java.util.InputMismatchException;
  import java.util.Scanner;
-public class Calculadora13 {
+public class Exercicio1 {
 
     public static void main(String[] args) {
+        System.out.println("Hello World!");
     }
-   static { 
+
+ static {
         Scanner scanner = new Scanner(System.in);
         int operacao;
         double numero1, numero2, resultado;
@@ -22,6 +25,7 @@ public class Calculadora13 {
         System.out.println("--- Calculadora Simples ---");
 
         while (true) {
+            // Mostrar menu
             System.out.println("\nEscolha a operação:");
             System.out.println("1 - Soma (+)");
             System.out.println("2 - Subtração (-)");
@@ -30,25 +34,28 @@ public class Calculadora13 {
             System.out.println("0 - Sair");
             System.out.print("Digite o número da operação: ");
 
+            // Ler operação
             try {
                 operacao = scanner.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Entrada inválida. Por favor, digite um número inteiro para a operação.");
-                scanner.next(); // Limpa o buffer do scanner
-                continue; // Volta para o início do loop
+                System.out.println("Entrada inválida. Por favor, digite um número inteiro.");
+                scanner.next(); // limpar o buffer
+                continue;
             }
 
+            // Sair
             if (operacao == 0) {
-                System.out.println("Saindo da calculadora. Até mais!");
-                break; // Sai do loop principal
+                System.out.println("Saindo da calculadora. Até logo!");
+                break;
             }
 
+            // Validar opção
             if (operacao < 1 || operacao > 4) {
-                System.out.println("Opção inválida. Por favor, escolha uma operação entre 1 e 4, ou 0 para sair.");
-                continue; // Volta para o início do loop
+                System.out.println("Opção inválida. Tente novamente.");
+                continue;
             }
 
-            // Obter os dois números
+            // Ler os dois números
             try {
                 System.out.print("Digite o primeiro número: ");
                 numero1 = scanner.nextDouble();
@@ -57,33 +64,29 @@ public class Calculadora13 {
                 numero2 = scanner.nextDouble();
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor, digite números válidos.");
-                scanner.next(); // Limpa o buffer do scanner
-                continue; // Volta para o início do loop
+                scanner.next(); // limpar buffer
+                continue;
             }
 
-            // Realizar a operação
-            resultado = 0; // Inicializa resultado
+            // Calcular resultado
+            resultado = 0;
 
             switch (operacao) {
                 case 1 -> {
-                    // Soma
                     resultado = numero1 + numero2;
                     System.out.println("Resultado da Soma: " + resultado);
                 }
                 case 2 -> {
-                    // Subtração
                     resultado = numero1 - numero2;
                     System.out.println("Resultado da Subtração: " + resultado);
                 }
                 case 3 -> {
-                    // Multiplicação
                     resultado = numero1 * numero2;
                     System.out.println("Resultado da Multiplicação: " + resultado);
                 }
                 case 4 -> {
-                    // Divisão
                     if (numero2 == 0) {
-                        System.out.println("Erro: Não é possível dividir por zero!");
+                        System.out.println("Erro: divisão por zero não é permitida.");
                     } else {
                         resultado = numero1 / numero2;
                         System.out.println("Resultado da Divisão: " + resultado);
@@ -91,6 +94,7 @@ public class Calculadora13 {
                 }
             }
         }
-        scanner.close(); // Fecha o scanner quando não é mais necessário
+
+        scanner.close();
     }
 }
