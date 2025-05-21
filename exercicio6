@@ -1,0 +1,50 @@
+package com.mycompany.exercicio1;
+
+import java.util.Scanner;
+
+public class Exercicio1 {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Coletando os dados do usuário
+        System.out.println("--- Inserir Dados Pessoais ---");
+        
+        // Nome
+        System.out.print("Digite seu nome: ");
+        String nome = scanner.nextLine();
+        
+        // Data de nascimento
+        System.out.print("Digite sua data de nascimento (formato: dd/mm/aaaa): ");
+        String dataNascimento = scanner.nextLine();
+        
+        // Curso
+        System.out.print("Digite o seu curso: ");
+        String curso = scanner.nextLine();
+        
+        // Série
+        System.out.print("Digite sua série: ");
+        String serie = scanner.nextLine();
+        
+        // Altura
+        System.out.print("Digite sua altura (em centimetros): ");
+        double altura = scanner.nextDouble();
+        
+        // Peso
+        System.out.print("Digite seu peso (em kg): ");
+        double peso = scanner.nextDouble();
+
+        // Exibindo os dados inseridos
+        System.out.println("\n--- Dados Inseridos ---");
+        System.out.println("Nome: " + nome);
+        System.out.println("Data de Nascimento: " + dataNascimento);
+        System.out.println("Curso: " + curso);
+        System.out.println("Série: " + serie);
+        System.out.println("Altura: " + altura + " centimetros");
+        System.out.println("Peso: " + peso + " kg");
+
+        // Fechar o scanner
+        scanner.close();
+    }
+}
