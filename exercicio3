@@ -1,0 +1,77 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.exercicio3; // <--- ATENÇÃO: ESTE É O NOME DO SEU PACOTE!
+
+import java.util.Scanner; // Import necessário para ler a entrada do usuário
+
+/**
+ *
+ * @author larad
+ */
+public class Exercicio3 { // <--- ATENÇÃO: O NOME DESTA CLASSE DEVE SER EXATAMENTE "Exercicio3"
+
+    public static void main(String[] args) {
+        // Usamos try-with-resources para garantir que o Scanner seja fechado automaticamente
+        try (Scanner scanner = new Scanner(System.in)) {
+            int numero; // Variável para armazenar o número a ser verificado
+            String entradaUsuario; // Variável para ler a entrada do usuário como String
+
+            System.out.println("--- Verificador de Número Primo ---");
+
+            // Loop para permitir que o usuário digite vários números e verificar se são primos
+            while (true) {
+                System.out.print("Digite um número inteiro positivo (ou '0' para sair): ");
+                entradaUsuario = scanner.nextLine(); // LÊ A LINHA INTEIRA DIGITADA PELO USUÁRIO COMO UMA STRING
+
+                // --- PASSO 1: Verificar se o usuário quer sair ---
+                if (entradaUsuario.equals("0")) {
+                    System.out.println("Saindo do verificador de números primos. Até mais!");
+                    break; // Sai do loop 'while(true)' e, consequentemente, do programa
+                }
+
+                // --- PASSO 2: Tentar converter a entrada para um número inteiro ---
+                try {
+                    numero = Integer.parseInt(entradaUsuario); // Tenta converter a String para um int
+                } catch (NumberFormatException e) {
+                    // Captura o erro se a String não puder ser convertida (ex: digitou "abc")
+                    System.out.println("Entrada inválida. Por favor, digite um número inteiro ou '0' para sair.");
+                    continue; // Volta para o início do loop para pedir a entrada novamente
+                }
+
+                // --- PASSO 3: Validar se o número é positivo ---
+                if (numero < 0) {
+                    System.out.println("Por favor, digite um número positivo.");
+                    continue; // Volta para o início do loop
+                }
+
+                // --- PASSO 4: Lógica para verificar se o número é primo ---
+                // Definições especiais para 1 e 2
+                if (numero == 1) {
+                    System.out.println(numero + " NÃO é um número primo (por definição, primos são maiores que 1).");
+                } else if (numero == 2) {
+                    System.out.println(numero + " é um número primo (é o único número primo par).");
+                } else {
+                    // Para números maiores que 2, verificamos a divisibilidade
+                    boolean ehPrimo = true; // Assumimos que o número é primo até provarmos o contrário
+                    // Um número é primo se não for divisível por nenhum inteiro entre 2 e a sua metade
+                    for (int i = 2; i <= numero / 2; i++) {
+                        if (numero % i == 0) { // Se o resto da divisão por 'i' for 0, significa que 'i' é um divisor
+                            ehPrimo = false; // Se encontramos um divisor, o número NÃO é primo
+                            break; // Não precisamos verificar mais, podemos sair do loop 'for'
+                        }
+                    }
+
+                    // --- PASSO 5: Exibir o resultado da verificação ---
+                    if (ehPrimo) {
+                        System.out.println(numero + " é um número primo.");
+                    } else {
+                        System.out.println(numero + " NÃO é um número primo.");
+                    }
+                }
+                System.out.println(); // Imprime uma linha em branco para melhor separação visual entre as verificações
+            }
+        } // O scanner é fechado automaticamente aqui graças ao try-with-resources
+    }
+}
