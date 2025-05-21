@@ -1,0 +1,46 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.exercicio1;
+
+/**
+ *
+ * @author FATEC ZONA LESTE
+ */
+
+import java.util.InputMismatchException;
+ import java.util.Scanner;
+public class Exercicio1 {
+
+    public static void main(String[] args) {
+    
+        try (Scanner scanner = new Scanner(System.in)) {
+            double nota1, nota2, nota3, nota4, media;
+            System.out.println("--- Calculadora de Média de Notas ---");
+            // Solicitar as 4 notas ao usuário
+            try {
+                System.out.print("Digite a primeira nota: ");
+                nota1 = scanner.nextDouble();
+                
+                System.out.print("Digite a segunda nota: ");
+                nota2 = scanner.nextDouble();
+                
+                System.out.print("Digite a terceira nota: ");
+                nota3 = scanner.nextDouble();
+                
+                System.out.print("Digite a quarta nota: ");
+                nota4 = scanner.nextDouble();
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida! Por favor, insira apenas números válidos.");
+                scanner.next(); // Limpa o buffer para evitar loop infinito
+                return; // Encerra o programa caso haja erro de entrada
+            }
+            // Calcular a média das 4 notas
+            media = (nota1 + nota2 + nota3 + nota4) / 4;
+            // Exibir a média calculada
+            System.out.println("\nA média das 4 notas é: " + media);
+            // Fechar o scanner    }
+}
+    }
+}
